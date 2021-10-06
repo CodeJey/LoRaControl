@@ -16,7 +16,7 @@ DHT dht2(DHTPIN2, DHTTYPE2);
 #define model 20150
 //array for sensor data
 char tem_1[8]={"\0"},hum_1[8]={"\0"}, tem_2[8]={"\0"},hum_2[8]={"\0"}, dis[8]={"\0"};
-//def the node id(BOARD)
+//def the node id(BOARD). Must be changed for different boards and specified for each, the id also must be added in dragino control panel 
 const char *node_id = ("<4567>");  //From LG01 via web Local Channel settings on MQTT.Please refer <> dataformat in here. 
 //def package length
 uint8_t datasend[42];
