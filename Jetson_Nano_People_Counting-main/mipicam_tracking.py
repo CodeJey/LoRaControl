@@ -218,7 +218,7 @@ class TrtThread(threading.Thread):
 #method to publish the people count in mqtt topic
 def mqtt_publishCount(msg):
     #set the broker adress, it can be external(ex. broker_adr = "mosquitto.iot")
-    broker_adr = "192.168.0.102"
+    broker_adr = "192.168.0.103"
     #set mqtt client name
     client = mqtt.Client("Jetson")
     #connecting to mqtt
@@ -325,7 +325,7 @@ def gstreamer_pipeline(
     capture_height=480,
     display_width=640,
     display_height=480,
-    framerate=15,
+    framerate=30,
     flip_method=0,
 ):
     return (
