@@ -3,6 +3,7 @@ import numpy as np
 import collections
 import threading
 import pycuda.driver as cuda
+import paho.mqtt.client as mqtt
 
 from utils.ssd import TrtSSD
 from filterpy.kalman import KalmanFilter
@@ -214,9 +215,22 @@ class TrtThread(threading.Thread):
         self.running = False
         self.join()
 
+#method to publish the people count in mqtt topic
+def mqtt_publishCount(msg):
+    #set the broker adress, it can be external(ex. broker_adr = "mosquitto.iot")
+    broker_adr = "192.168.0.102"
+    #set mqtt client name
+    client = mqtt.Client("Jetson")
+    #connecting to mqtt
+    client.connect(broker_adr)
+    #publish the message client.publish("<topic>", <message>)
+    client.publish("python/et", str(msg)) 
+
+#method to get people count in the room
 def inRoom_count(pin, pout):
     inRoom = pin - pout
     print("People in the room: " + str(inRoom))
+    if inRoom > 0: mqtt_publishCount(inRoom)
 
 def get_frame(condition):
     frame = 0
