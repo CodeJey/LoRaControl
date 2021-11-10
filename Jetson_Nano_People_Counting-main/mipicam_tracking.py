@@ -229,8 +229,9 @@ def mqtt_publishCount(msg):
 #method to get people count in the room
 def inRoom_count(pin, pout):
     inRoom = pin - pout
+    if inRoom < 0: inRoom = 0 
     print("People in the room: " + str(inRoom))
-    if inRoom > 0: mqtt_publishCount(inRoom)
+    mqtt_publishCount(inRoom)
 
 def get_frame(condition):
     frame = 0
