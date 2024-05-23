@@ -218,7 +218,7 @@ class TrtThread(threading.Thread):
 #method to publish the people count in mqtt topic
 def mqtt_publishCount(msg):
     #set the broker adress, it can be external(ex. broker_adr = "mosquitto.iot")
-    broker_adr = "192.168.0.103"
+    broker_adr = "10.10.0.10"
     #set mqtt client name
     client = mqtt.Client("Jetson")
     #connecting to mqtt
